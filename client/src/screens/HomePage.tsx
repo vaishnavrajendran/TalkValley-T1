@@ -126,11 +126,11 @@ const HomePage = () => {
   return (
     <div className="flex flex-col h-screen bg-gray-100">
       <Navbar onLogout={handleLogout} />
-      <div className="flex-grow flex items-center justify-center relative">
-        <video ref={videoRef} id="user-1" className="w-full h-[600px]" autoPlay playsInline />
-        <div id="controls" className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-4">
+      <div className="flex-grow flex flex-col items-center justify-center relative">
+        <video ref={videoRef} id="user-1" className="w-full max-h-[60vh] mb-4" autoPlay playsInline />
+        <div id="controls" className="flex flex-col items-center space-y-4">
           <div
-            className={`bg-custom-primary px-3 rounded-3xl cursor-pointer ${cameraEnabled ? 'bg-custom-primary' : 'bg-custom-secondary'
+            className={`bg-custom-primary px-3 py-2 rounded-full cursor-pointer ${cameraEnabled ? 'bg-custom-primary' : 'bg-custom-secondary'
               }`}
             id="camera-btn"
             onClick={() => {
@@ -138,11 +138,11 @@ const HomePage = () => {
               setCameraEnabled((prev) => !prev);
             }}
           >
-            {isRecording ? <FaStopCircle width="30px" /> : <FaCamera width="30px" />}
+            {isRecording ? <FaStopCircle className="text-white" size={30} /> : <FaCamera className="text-white" size={30} />}
           </div>
           {recordedChunks.length > 0 && (
             <button
-              className="bg-custom-primary cursor-pointer px-3"
+              className="bg-custom-primary py-2 px-4 rounded-full cursor-pointer"
               onClick={handleDownloadBothRecordings}
             >
               Download Recorded
