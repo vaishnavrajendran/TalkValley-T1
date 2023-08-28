@@ -26,7 +26,7 @@ const HomePage = () => {
   useEffect(() => {
     const getCameraAccess = async () => {
       try {
-        const localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+        const localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
         if (videoRef.current) {
           videoRef.current.srcObject = localStream;
           const recorder = new MediaRecorder(localStream, { mimeType: 'video/webm' });
@@ -49,7 +49,7 @@ const HomePage = () => {
     try {
       const screenStream = await navigator.mediaDevices.getDisplayMedia({
         video: true,
-        audio: false,
+        audio: true,
       });
 
       setScreenStream(screenStream);
